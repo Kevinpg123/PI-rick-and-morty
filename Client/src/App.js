@@ -4,7 +4,8 @@ import Card from "./components/Card.jsx";
 import Cards from "./components/Cards.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import axios from "axios";
-import {Outlet, Route, Routes, useLocation, Navigate, useNavigate} from "react-router-dom"
+import { Outlet, Route, Routes, useLocation, Navigate, useNavigate } from "react-router-dom"
+import swal from "sweetalert"  ////////////ESTO ES UN WINDOWS ALERT MAS LINDO
 
 import Nav from "./components/Nav";
 import About from "./components/About";
@@ -19,25 +20,30 @@ function App() {
 
 	const location = useLocation()
 
-	let onSearch = function (id) {
+	let onSearch = async function (id) {
 		// console.log(id);
 		characters.forEach(element => {
 			console.log(id);
 			if (element.id == id) {
-				window.alert("Este personaje ya esta en pantalla");
+				swal("Este personaje ya esta en pantalla");
 				id = null;
 			}
 			
 		});
 		if (id) {
 			parseInt(id);
-			axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+			try {
+				const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`)
 				if (data.name) {
 					setCharacters((oldChars) => [...oldChars, data]);
 				} else {
-					window.alert('¡No hay personajes con este ID!');
+					swal('¡No hay personajes con este ID!');
 				}
-			});
+			
+			} catch (error) {
+				swal("No existe personaje con ese id");
+			}
+			
 		}
 	 }
 	
@@ -58,13 +64,37 @@ function App() {
 	const EMAIL = "osmarkevinp@gmail.com";
 	const PASSWORD = "Rick123";
 	
-	const login = (dataUser) => {
-		if (dataUser.password === PASSWORD && dataUser.email === EMAIL) {
-			setAccess(true);
-			alert("Login Exitoso")
-			navigate('/home')
+	const login= async (userData) => {
+		const { email, password } = userData;
+		const URL = 'http://localhost:3001/rickandmorty/login/';
+
+		try {
+			const response = await axios(URL + `?email=${email}&password=${password}`)
+			const access = response.data;
+			const {data} = response
+			
+				 setAccess(data);
+				console.log("MOSTRAME DATAAAA  " + data);
+				if (!access) {
+					swal({
+						text: "Usuario o contraseña incorrecto",
+						icon: "error",
+						button: "Aceptar"
+				}) }
+				if (access) {
+					swal({
+						text: "Acceso concedido",
+						icon: "success",
+						button: "Aceptar"
+				})}
+				access && navigate('/home');
+			 
+		} catch (error) {
+			console.log(error.message);
 		}
-	}
+
+		
+	 }
 	
 	useEffect(() => {
 		!access && navigate('/');

@@ -18,6 +18,13 @@ export default function Card(props) {
 		});
 	}, [myFavorites]);
 
+	useEffect(() => {
+		myFavorites.forEach((fav) => {
+			if (fav === id) {
+				setIsFav(true);
+			}
+		});
+	}, []);
 
 	const [isFav, setIsFav] = useState(false)
 

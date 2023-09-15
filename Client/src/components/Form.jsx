@@ -15,10 +15,14 @@ export default function Form(props) {
         const value = event.target.value;
 
         setUserData({ ...userData, [property]: value })
-        validation(errors, setErrors, { ...userData, [property]: value })
+        setErrors(validation({ ...userData, [property]: value }))
+
     }
 
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({
+        email: "",
+        password: ""
+    })
 
     const submitHandler = (event) => {
         event.preventDefault();
