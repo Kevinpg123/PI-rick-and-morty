@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { validation } from './validation';
+import style from './styles_css/Form.module.css'
+
+
 
 export default function Form(props) {
     const { login } = props;
@@ -32,21 +35,35 @@ export default function Form(props) {
 
 
     return (
-        <div>
-            <form onSubmit={submitHandler}>
 
-                <label htmlFor='email'>Email</label>
-                <input name="email" type='email' value={userData.email} onChange={handleChange}></input>
-                {errors.email && <label>{errors.email}</label>}
-                <br></br>
-                <br></br>
-                <label htmlFor='password'>Password</label>
-                <input name="password" type="password" value={userData.password} onChange={handleChange}></input>
-                {errors.password && <label>{errors.password}</label>}
-                <br></br>
-                <button type='submit'>Submit</button>
+        <div className={style.divGrande}>
+            <h1 className={style.tituloh1} >Rick and Morty</h1>
+            <form onSubmit={submitHandler} className={style.form}>
+                <h2 className={style.h2Form}>Bienvenido</h2>
+
+                {/* <label htmlFor='email'>Email</label> */}
+                <input className={style.inputs} name="email" type='email' placeholder='Email' value={userData.email} onChange={handleChange}></input>
+
+                <div className={style.errorContainer}>
+                    {/* {errors.email && <label className={style.errorMessage}>{errors.email}</label>} */}
+                    <label className={style.errorMessage}>{errors.email}</label>
+
+                </div>
+
+
+                {/* <label htmlFor='password'>Password</label> */}
+                <input className={style.inputs} name="password" type="password" placeholder='Password' value={userData.password} onChange={handleChange}></input>
+
+                <div className={style.errorContainer}>
+                    {/* {errors.password && <label className={style.errorMessage}>{errors.password}</label>} */}
+                    <label className={style.errorMessage}>{errors.password}</label>
+
+                </div>
+
+                <button className={style.button} type='submit'>Iniciar Sesión</button>
 
             </form>
         </div>
+
     )
 }

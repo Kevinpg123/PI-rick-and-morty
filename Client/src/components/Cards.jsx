@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card";
+import style from "./styles_css/Cards.module.css"
 
 export default function Cards({ characters, onClose }) {
 	// const { id, name, status, species, gender, origin, image } = props.characters;
@@ -8,7 +9,7 @@ export default function Cards({ characters, onClose }) {
 	// console.log("esto es cards---->", characters);
 
 	return (
-		<div>
+		<div className={style.divGrande}>
 
 			{characters.map((element) => {
 				const { id, name, status, species, gender, origin, image } = element;
