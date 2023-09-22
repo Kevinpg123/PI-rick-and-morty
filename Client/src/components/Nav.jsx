@@ -6,16 +6,17 @@ import style from "./styles_css/Nav.module.css"
 export default function Nav({ onSearch }) {
     // console.log(onSearch);
     return (
-        <div>
+        <div className={style.divBig}>
             <Link to="/home">
-                <button className={style.button1}>Home</button>
+                <button className={style.buttons}>Home</button>
             </Link>
             <Link to="/about">
-                <button>About</button>
+                <button className={style.buttons}>About</button>
             </Link>
             <Link to="/favorites">
-                <button>Favorites</button>
+                <button className={style.buttons}>Favorites</button>
             </Link>
+
             <SearchBar onSearch={onSearch} />
         </div>
     )

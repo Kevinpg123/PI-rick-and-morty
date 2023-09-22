@@ -9,7 +9,7 @@ export default function Cards({ characters, onClose }) {
 	// console.log("esto es cards---->", characters);
 
 	return (
-		<div className={style.divGrande}>
+		<div>
 
 			{characters.map((element) => {
 				const { id, name, status, species, gender, origin, image } = element;

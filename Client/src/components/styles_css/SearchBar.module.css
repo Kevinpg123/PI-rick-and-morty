@@ -1,0 +1,35 @@
+.input {
+    height: 2.4em;
+    border: 2px solid black;
+    border-radius: 0.6em;
+
+
+}
+
+
+
+
+
+.button {
+    height: 2em;
+    width: 8em;
+    margin-left: 0.8em;
+    background-color: #AD92F1;
+    border: 2px solid black;
+    border-radius: 3em;
+
+    transition: transform 0.2s;
+    font-size: 1em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+
+.button:hover {
+    cursor: pointer;
+    box-shadow: 0 2px 4px black;
+}
+
+.button:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 4px white;
+}

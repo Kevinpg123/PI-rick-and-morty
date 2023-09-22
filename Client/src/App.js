@@ -105,7 +105,7 @@ function App() {
 			{location.pathname !== "/" && (
 				<>
 				<Nav onSearch={onSearch} />
-				<hr></hr>
+				
 				</>
 			)}
 
