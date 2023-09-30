@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Card from './Card'
 import axios from 'axios'
 import { filterCards, orderCards } from '../redux/action'
+import style from "./styles_css/Favorites.module.css"
 
 export default function Favorites({ characters }) {
 
@@ -17,11 +18,12 @@ export default function Favorites({ characters }) {
         dispatch(orderCards(event.target.value))
     }
 
+    const showButton = false;
 
 
 
     return (
-        <div>
+        <div className={style.bigDiv}>
             <div>
                 <select onChange={handleOrder}>
 
@@ -59,6 +61,7 @@ export default function Favorites({ characters }) {
                                     gender={gender}
                                     origin={origin}
                                     image={image}
+                                    showButton={showButton}
 
 
                                 />

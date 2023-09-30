@@ -7,9 +7,9 @@ export default function Cards({ characters, onClose }) {
 	/////mientras haya solo una card
 
 	// console.log("esto es cards---->", characters);
-
+	const showButton = true;
 	return (
-		<div>
+		<div className={style.bigDiv}>
 
 			{characters.map((element) => {
 				const { id, name, status, species, gender, origin, image } = element;
@@ -26,6 +26,7 @@ export default function Cards({ characters, onClose }) {
 							origin={origin}
 							image={image}
 							onClose={onClose}
+							showButton={showButton}
 						/>
 					</div>
 				);

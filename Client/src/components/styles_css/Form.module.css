@@ -2,6 +2,8 @@ body {
     /* background-image: url(https://wallpapershome.com/images/pages/pic_h/23165.jpg); */
     background-image: url("https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABQiueWggGi5jRi90-HxWCCR50UQv0Ah8_FlRzbT3hib02J5mvN9-g8YsT8jN9dFdgspCFLSHgc27S-fqRNxBglbwfHexRSKVQWIN.jpg?r=9b9");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .divGrande {

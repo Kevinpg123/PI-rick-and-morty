@@ -1,13 +1,25 @@
 const server = require("./app");
 const PORT = 3001;
+const { conn } = require('./DB_connection');
+
+conn 
+    .sync({ force: true })
+    .then(() => {
+        server.listen(PORT, () => {
+            console.log(`Server corriendo en el puerto ${PORT}`);
+            
+            
+        })
+    })
+    .catch((err) => console.log(err))
 
 
 
-server.listen(PORT, () => {
-    console.log(`Server corriendo en el puerto ${PORT}`);
+// server.listen(PORT, () => {
+//     console.log(`Server corriendo en el puerto ${PORT}`);
     
     
-})
+// })
 // const express = require("express")
 // const rutas = require("../src/routes/index")
 // const PORT = 3001;

@@ -12,6 +12,7 @@ import About from "./components/About";
 import Detail from "./components/Detail";
 import Form from "./components/Form";
 import Favorites from "./components/Favorites";
+import style from './components/styles_css/App.module.css'
 
 
 function App() {
@@ -119,7 +120,7 @@ function App() {
 				
 							<Route path="/home" element={
 								<>
-								<button onClick={closeAll}>Cerrar todas las tarjetas</button>
+								<button className={style.button} onClick={closeAll}>Cerrar todas las tarjetas</button>
 								<Cards characters={characters} onClose={onClose} />
 								</>
 							}></Route>

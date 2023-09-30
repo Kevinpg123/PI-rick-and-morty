@@ -1,3 +1,21 @@
-.backgroundImage {
-    background-image: url("https://wallpapershome.com/images/pages/pic_h/23165.jpg");
+.button {
+    margin-top: 6.5em;
+    padding: 0.5em 1.5em;
+    border-radius: 0.3em;
+    background-color: #27AE60;
+    font-size: 1em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: 3px solid black;
+    transition: transform 0.2s;
+
+}
+
+.button:hover {
+    cursor: pointer;
+    box-shadow: 0 1px 2px black;
+}
+
+.button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px black;
 }

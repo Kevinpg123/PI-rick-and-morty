@@ -12,6 +12,12 @@ body {
     background-color: #524571;
     border-radius: 3em;
     align-items: center;
+    position: fixed;
+    top: 0.5em;
+    left: 0;
+    width: 100%;
+
+    z-index: 1000;
 }
 
 .buttons {
