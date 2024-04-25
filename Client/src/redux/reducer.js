@@ -28,6 +28,12 @@ const rootReducer = (state = initialState, action) => {
         //         // allFavorites: state.myFavorites.filter((fav) => fav.id !== id)
         //     }
         //     break;
+
+
+
+
+
+        
         case FILTER:
             let favoritesFiltered = state.allFavorites.filter((char) => char.gender === action.payload)
             return {

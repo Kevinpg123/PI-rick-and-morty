@@ -25,9 +25,22 @@ module.exports = (sequelize) => {
          allowNull: false,
       },
       origin: {
-         type: DataTypes.STRING,
+         type: DataTypes.JSONB,
          allowNull: false,
+         get() {
+            // Obtén el valor de origin como un objeto JSON
+            const originString = this.getDataValue('origin');
+            return originString ? JSON.parse(originString) : null;
+         },
+         set(value) {
+            // Establece el valor de origin como un objeto JSON
+            this.setDataValue('origin', JSON.stringify(value));
+         }
       },
+      image: {
+         type: DataTypes.STRING,
+         allowNull:false,
+      }
    }, { timestamps: false });
 };
 

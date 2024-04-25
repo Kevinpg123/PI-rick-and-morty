@@ -75,7 +75,6 @@ function App() {
 			const {data} = response
 			
 				 setAccess(data);
-				console.log("MOSTRAME DATAAAA  " + data);
 				if (!access) {
 					swal({
 						text: "Usuario o contraseña incorrecto",

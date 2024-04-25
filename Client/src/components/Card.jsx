@@ -38,7 +38,7 @@ export default function Card(props) {
 		}
 		if (isFav === false) {
 			setIsFav(true)
-			dispatch(addFav(props))
+			dispatch(addFav({ id, name, status, species, gender, origin, image }))
 		}
 
 	}
