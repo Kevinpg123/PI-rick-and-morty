@@ -1,18 +1,23 @@
 
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 const { User } = require('../DB_connection');
 const login = async(req, res) => {
     const { email, password } = req.query;
     if (!email || !password) { return res.status(400).json({ message: "Faltan datos" }) };
     try {
-        const searchUser = await User.findAll({
-            where: {email:email}
-        })
-        // console.log(searchUser[0].dataValues);
-        if (searchUser) {
-            if (searchUser[0].dataValues.password == password) {
-                return res.status(201).json({access: true})
-            }else return res.status(403).json({message: "Contraseña incorrecta"})
+        const user = await User.findOne({ where: { email } })
+        if (!user) {
+            return res.status(401).json({message: 'Credenciales invalidas'})
         }
+
+        const passwordMatch = await bcrypt.compare(password, user.password)
+        if (!passwordMatch) {
+            return res.status(401).json({message: 'Contraseña invalida'})
+        }
+
+        const token = jwt.sign({ userId: user.id }, 'aguanteLaProgramacionWachin', { expiresIn: '1h' })
+        return res.json({token})
         
     } catch (error) {
         return res.status(404).json({ message: "Usuario no encontrado"})
