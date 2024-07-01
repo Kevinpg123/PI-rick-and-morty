@@ -13,13 +13,18 @@ export default function Card(props) {
 	const myFavorites = useSelector((state) => state.myFavorites)
 	const [isFav, setIsFav] = useState(false)
 
-	myFavorites.forEach((char) => { console.log(char) })
+	// myFavorites.forEach((char) => { console.log(char) })
 	useEffect(() => {
-		myFavorites.forEach((fav) => {
-			if (fav.id === id) {
-				setIsFav(true);
-			}
-		});
+		console.log(typeof (myFavorites));
+		console.log(myFavorites);
+		// if (Array.isArray(myFavorites)) {
+
+		// 	myFavorites.forEach((fav) => {
+		// 		if (fav.id === id) {
+		// 			setIsFav(true);
+		// 		}
+		// 	});
+		// }
 	}, [myFavorites]);
 
 	// useEffect(() => {
