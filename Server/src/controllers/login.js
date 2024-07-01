@@ -17,7 +17,7 @@ const login = async(req, res) => {
         }
 
         const token = jwt.sign({ userId: user.id }, 'aguanteLaProgramacionWachin', { expiresIn: '1h' })
-        return res.json({token})
+        return res.json({token, userId: user.id })
         
     } catch (error) {
         return res.status(404).json({ message: "Usuario no encontrado"})

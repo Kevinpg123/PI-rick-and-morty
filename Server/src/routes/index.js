@@ -10,7 +10,7 @@ const getFav = require('../controllers/getFav')
 
 const rutas = Router();
 
-rutas.post("/login", (req, res) => {
+rutas.post("/logup", (req, res) => {
     postUser(req,res)
 })
 

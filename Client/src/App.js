@@ -65,29 +65,38 @@ function App() {
 	const EMAIL = "osmarkevinp@gmail.com";
 	const PASSWORD = "Rick123";
 	
-	const login= async (userData) => {
+	const login = async (userData) => {
+		
 		const { email, password } = userData;
 		const URL = 'http://localhost:3001/rickandmorty/login/';
 
 		try {
-			const response = await axios(URL + `?email=${email}&password=${password}`)
-			const access = response.data;
-			const {data} = response
+			const {data} = await axios(URL + `?email=${email}&password=${password}`)
 			
-				 setAccess(data);
-				if (!access) {
+			
+				 
+			if (data.token) {
+				localStorage.setItem('token', data.token);
+				localStorage.setItem('userId', data.userId);
+				console.log('Inicio de sesión exitoso');
+				setAccess(true)
+				swal({
+					text: "Acceso concedido",
+					icon: "success",
+					button: "Aceptar"
+
+						
+				})
+				navigate('/home');
+			}
+				if (!data.token) {
 					swal({
+						
 						text: "Usuario o contraseña incorrecto",
 						icon: "error",
 						button: "Aceptar"
-				}) }
-				if (access) {
-					swal({
-						text: "Acceso concedido",
-						icon: "success",
-						button: "Aceptar"
 				})}
-				access && navigate('/home');
+				
 			 
 		} catch (error) {
 			console.log(error.message);
