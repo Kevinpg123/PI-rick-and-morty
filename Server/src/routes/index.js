@@ -27,7 +27,7 @@ rutas.post("/fav", (req, res) => {
     postFav(req, res)
 })
 
-rutas.delete("/fav/:id", (req, res) => {
+rutas.delete("/favDelete", (req, res) => {
     deleteFav(req, res)
 })
 

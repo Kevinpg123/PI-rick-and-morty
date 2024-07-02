@@ -4,10 +4,10 @@ const postFav = async(req, res) => {
     const { name, origin, status, image, species, gender, userID } = req.body;
     
     try {
-        if (!name || !origin || !status || !image || !species || !gender || !userID) { return res.status(400).json({ message: "Faltan datos" }) };
+        if (!externalId || !name || !origin || !status || !image || !species || !gender || !userID) { return res.status(400).json({ message: "Faltan datos" }) };
         const [favorite, created] = await Favorite.findOrCreate({
             where: {
-                name, origin, status, image, species, gender
+                externalId, name, origin, status, image, species, gender
             }
         })
         
