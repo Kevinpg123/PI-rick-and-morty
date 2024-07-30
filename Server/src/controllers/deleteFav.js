@@ -7,12 +7,13 @@ const deleteFav = async (req, res) => {
         
         const favorite = await Favorite.findByPk(id)
         if (!favorite) {
-            return res.status(400).json({message: "Favorito no encontrado"})
+            return res.status(400).json({ message: "Favorito no encontrado" })
         }
 
-        const user = await 
-
-    } catch (error) {
+        
+        return res.status(200).json("todo bien")
+    }
+    catch (error) {
         return res.status(500).json(error.message)
     }
 }

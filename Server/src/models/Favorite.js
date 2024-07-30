@@ -6,11 +6,14 @@ module.exports = (sequelize) => {
          type: DataTypes.INTEGER,
          primaryKey: true,
          autoIncrement: true,
+         
       },
-      externalId: {
+
+      apiId: {
          type: DataTypes.INTEGER,
          allowNull:false,
       },
+      
       name: {
          type: DataTypes.STRING,
          allowNull: false,
