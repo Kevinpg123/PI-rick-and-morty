@@ -11,7 +11,8 @@ module.exports = (sequelize) => {
 
       apiId: {
          type: DataTypes.INTEGER,
-         allowNull:false,
+         allowNull: false,
+         unique: true,
       },
       
       name: {

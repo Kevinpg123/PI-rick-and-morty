@@ -3,6 +3,7 @@ const { Sequelize } = require('sequelize');
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, PORT } = process.env;
 const FavoriteModel = require('./models/Favorite');
 const UserModel = require('./models/User');
+const UserFavoriteModel = require('./models/UserFavorite')
 
 // EJERCICIO 03
 // A la instancia de Sequelize le falta la URL de conexión. ¡Agrégala!
@@ -19,20 +20,22 @@ const sequelize = new Sequelize(
 // Debajo de este comentario puedes ejecutar la función de los modelos.
 FavoriteModel(sequelize);
 UserModel(sequelize);
+UserFavoriteModel(sequelize)
 //
 
 //
 
 // Ejercicio 06
 // ¡Relaciona tus modelos aquí abajo!
-const { User, Favorite } = sequelize.models;
+const { User, Favorite, UserFavorite } = sequelize.models;
 
-User.belongsToMany(Favorite, { through: "user_favorite", foreignKey: "user_id", otherKey: "favorite_apiId"});
-Favorite.belongsToMany(User, { through: "user_favorite", foreignKey: "favorite_apiId", otherKey: "user_id" });
+User.belongsToMany(Favorite, { through: UserFavorite, foreignKey: "userId", otherKey: "favoriteApiId"});
+Favorite.belongsToMany(User, { through: UserFavorite, foreignKey: "favoriteApiId", otherKey: "userId" });
 
 
 module.exports = {
    User,
    Favorite,
+   UserFavorite,
    conn: sequelize,
 };
