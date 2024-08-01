@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, PORT } = process.env;
 const FavoriteModel = require('./models/Favorite');
 const UserModel = require('./models/User');
@@ -18,9 +18,9 @@ const sequelize = new Sequelize(
 
 // EJERCICIO 05
 // Debajo de este comentario puedes ejecutar la función de los modelos.
-FavoriteModel(sequelize);
-UserModel(sequelize);
-UserFavoriteModel(sequelize)
+FavoriteModel(sequelize, DataTypes);
+UserModel(sequelize, DataTypes);
+UserFavoriteModel(sequelize, DataTypes)
 //
 
 //
